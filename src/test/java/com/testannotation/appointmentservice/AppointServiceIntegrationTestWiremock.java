@@ -4,7 +4,6 @@ import com.testannotation.appointmentservice.client.PatientClient;
 import com.testannotation.appointmentservice.model.Patient;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -38,7 +37,6 @@ public class AppointServiceIntegrationTestWiremock {
                              "}")
                 )
         );
-
     }
 
     @Test
@@ -49,11 +47,10 @@ public class AppointServiceIntegrationTestWiremock {
         //When
         ResponseEntity<Patient> response = patientClient.searchPatient(MRN);
 
-        System.out.println("Reg Date: "+response.getBody().getDateOfRegistration());
         //Then
         then(response.getStatusCode().equals(200));
         then(response.getBody().getMRN().equals(MRN));
-
+        then(response.getBody().getDateOfRegistration().equals("04/12/2009"));
     }
 
 }

@@ -26,7 +26,6 @@ public class AppointmentController {
     @PostMapping(value = "/appointment-service/appointment", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Appointment> addNewPatient(@RequestBody Appointment appointment){
 
-
         ResponseEntity<Patient> response = patientClient.searchPatient(appointment.getMRN());
 
         if(response.getStatusCode().equals(404)){
