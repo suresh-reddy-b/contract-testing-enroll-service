@@ -1,7 +1,7 @@
-package com.testannotation.appointmentservice;
+package com.testannotation.enrollservice;
 
-import com.testannotation.appointmentservice.client.PatientClient;
-import com.testannotation.appointmentservice.model.Patient;
+import com.testannotation.enrollservice.client.StudentClient;
+import com.testannotation.enrollservice.model.Student;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,14 +16,14 @@ import static org.assertj.core.api.BDDAssertions.then;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureWireMock (port = 9090)
-public class AppointServiceIntegrationTestWiremock {
+public class EnrollServiceIntegrationTestWiremock {
     @Autowired
-    PatientClient patientClient;
+    StudentClient studentClient;
 
     @Before
     public void createStub(){
-        stubFor(get(urlPathEqualTo("/patient-service/patient"))
-                .withQueryParam("MRN", equalTo("2009120409"))
+        stubFor(get(urlPathEqualTo("/student-service/student"))
+                .withQueryParam("ID", equalTo("2020091701"))
                 .willReturn(aResponse()
                     .withStatus(200)
                     .withHeader("Content-Type", "application/json")
@@ -33,24 +33,24 @@ public class AppointServiceIntegrationTestWiremock {
                             "\"birthDate\": \"02/02/1997\",\n"+
                             "\"registration\": \"04/12/2009\",\n"+
                             "\"address\": \"15 Foreshore Road, Philadelphia, PA, 19101\",\n"+
-                            "\"mrn\": \"2009120401\"\n"+
+                            "\"id\": \"2020091701\"\n"+
                              "}")
                 )
         );
     }
 
     @Test
-    public void scheduleAppointment(){
+    public void enrollExistingStudent(){
         //Given
-        String MRN = "2009120409";
+        String ID = "2020091701";
 
         //When
-        ResponseEntity<Patient> response = patientClient.searchPatient(MRN);
+        ResponseEntity<Student> response = studentClient.searchStudent(ID);
 
         //Then
         then(response.getStatusCode().equals(200));
-        then(response.getBody().getMRN().equals(MRN));
-        then(response.getBody().getDateOfRegistration().equals("04/12/2009"));
+        then(response.getBody().getID().equals(ID));
+        then(response.getBody().getRegistrationDate().equals("04/12/2009"));
     }
 
 }

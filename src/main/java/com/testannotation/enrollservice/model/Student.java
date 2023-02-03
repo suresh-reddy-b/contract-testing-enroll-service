@@ -1,19 +1,19 @@
 
-package com.testannotation.appointmentservice.model;
+package com.testannotation.enrollservice.model;
 
-public class Patient {
-    private String MRN;
+public class Student {
+    private String ID;
     private String firstName;
     private String lastName;
     private String dateOfBirth;
-    private String dateOfRegistration;
+    private String registrationDate;
 
-    public String getMRN() {
-        return MRN;
+    public String getID() {
+        return ID;
     }
 
-    public void setMRN(String MRN) {
-        this.MRN = MRN;
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
     public String getFirstName() {
@@ -40,12 +40,12 @@ public class Patient {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getDateOfRegistration() {
-        return dateOfRegistration;
+    public String getRegistrationDate() {
+        return registrationDate;
     }
 
-    public void setDateOfRegistration(String dateOfRegistration) {
-        this.dateOfRegistration = dateOfRegistration;
+    public void setRegistrationDate(String registrationDate) {
+        this.registrationDate = registrationDate;
     }
 
     public String getAddress() {
@@ -58,24 +58,24 @@ public class Patient {
 
     private String address;
 
-    public Patient(){
+    public Student(){
 
     }
 
-    public Patient(String firstName, String lastName, String dateOfBirth, String dateOfRegistration, String address) {
+    public Student(String firstName, String lastName, String dateOfBirth, String registrationDate, String address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
-        this.dateOfRegistration = dateOfRegistration;
+        this.registrationDate = registrationDate;
         this.address = address;
     }
 
-    public Patient(String firstName, String lastName, String MRN, String dateOfBirth, String dateOfRegistration, String address) {
+    public Student(String firstName, String lastName, String MRN, String dateOfBirth, String registrationDate, String address) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.MRN = MRN;
+        this.ID = ID;
         this.dateOfBirth = dateOfBirth;
-        this.dateOfRegistration = dateOfRegistration;
+        this.registrationDate = registrationDate;
         this.address = address;
     }
 

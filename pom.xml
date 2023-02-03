@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.testannotation</groupId>
-	<artifactId>appointment-service</artifactId>
+	<artifactId>enroll-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>appointment-service</name>
-	<description>Schedule Appointment</description>
+	<name>enroll-service</name>
+	<description>Schedule Enroll</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
