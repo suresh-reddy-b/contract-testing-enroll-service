@@ -70,7 +70,7 @@ public class Student {
         this.address = address;
     }
 
-    public Student(String firstName, String lastName, String MRN, String dateOfBirth, String registrationDate, String address) {
+    public Student(String firstName, String lastName, String ID, String dateOfBirth, String registrationDate, String address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.ID = ID;
