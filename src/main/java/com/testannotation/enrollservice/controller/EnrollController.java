@@ -23,7 +23,7 @@ public class EnrollController {
 
     @PostMapping(value = "/enroll-service/enroll", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Enroll> enrollNewStudent(@RequestBody Enroll enroll){
-        ResponseEntity<Student> response = studentClient.searchStudent(enroll.getID());
+        ResponseEntity<Student> response = studentClient.searchStudent(enroll.getStudentID());
         if(response.getStatusCode().equals(404)){//STUDENT_NOT_FOUND
             return ResponseEntity.notFound().build(); }
         enroll = enrollService.createCourse(enroll);

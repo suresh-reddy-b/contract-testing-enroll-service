@@ -1,8 +1,10 @@
 package com.testannotation.enrollservice.client;
 
+import com.testannotation.enrollservice.model.Enroll;
 import com.testannotation.enrollservice.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -54,13 +56,28 @@ public class StudentClient {
 
     }
 
-    /*public ResponseEntity<Student> enrollStudent(String ID) {
-        need to work on
+    public ResponseEntity<Enroll> enrollStudent(String studentID) {
 
-    }*/
+        Enroll enrollCourse = new Enroll(studentID, "3M", "Data science");
+
+        HttpEntity<Enroll> entity = new HttpEntity<Enroll>(enrollCourse, headers);
+
+        ResponseEntity<Enroll> response = restTemplate.exchange(createURLWithPortForEnroll("/enroll-service/enroll"),
+                HttpMethod.POST, entity, Enroll.class);
+
+        System.out.println(response.getBody());
+        System.out.println(response.getStatusCode());
+        System.out.println(response.getBody().getEnrollID());
+
+        return response;
+
+    }
 
     private String createURLWithPort(String uri) {
         return "http://localhost:" + port + uri;
+    }
+    private String createURLWithPortForEnroll(String uri) {
+        return "http://localhost:" + 8090 + uri;
     }
 
 }

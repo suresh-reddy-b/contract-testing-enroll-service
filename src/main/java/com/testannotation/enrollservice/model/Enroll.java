@@ -2,6 +2,9 @@ package com.testannotation.enrollservice.model;
 
 public class Enroll {
     private String enrollID;
+    private String studentID;
+    private String duration;
+    private String course;
 
     public String getEnrollID() {
         return enrollID;
@@ -10,17 +13,13 @@ public class Enroll {
     public void setEnrollID(String enrollID) {
         this.enrollID = enrollID;
     }
-    private String ID;
-    private String duration;
 
-    private String course;
-
-    public String getID() {
-        return ID;
+    public String getStudentID() {
+        return studentID;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setStudentID(String studentID) {
+        this.studentID = studentID;
     }
 
     public String getDuration() {
@@ -39,11 +38,16 @@ public class Enroll {
         this.course = course;
     }
 
-    public Enroll(String enrollID, String ID, String duration, String course) {
+    public Enroll(String enrollID, String studentID, String duration, String course) {
         this.enrollID=enrollID;
-        this.ID=ID;
+        this.studentID = studentID;
         this.duration=duration;
         this.course=course;
+    }
 
+    public Enroll(String studentID, String duration, String course) {
+        this.studentID = studentID;
+        this.duration=duration;
+        this.course=course;
     }
 }
