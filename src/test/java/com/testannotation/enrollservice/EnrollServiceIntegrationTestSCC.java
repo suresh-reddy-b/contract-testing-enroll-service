@@ -1,6 +1,7 @@
 package com.testannotation.enrollservice;
 
 import com.testannotation.enrollservice.client.StudentClient;
+import com.testannotation.enrollservice.model.Enroll;
 import com.testannotation.enrollservice.model.Student;
 import org.junit.Assert;
 import org.junit.Test;
@@ -32,24 +33,38 @@ public class EnrollServiceIntegrationTestSCC {
 
         //When
         ResponseEntity<Student> response = studentClient.searchStudent(ID);
-        //studentClient.enrollStudent(ID);
 
-        //Then
         then(response.getStatusCode().equals(200));
         then(response.getBody().getID().equals(ID));
         then(response.getBody().getRegistrationDate().equals("04/12/2009"));
+
+        ResponseEntity<Enroll> enrollResponse =  studentClient.enrollStudent(ID);
+
+        //Then
+        then(enrollResponse.getStatusCode().equals(201));
+        System.out.println(enrollResponse.getBody().getEnrollID());
+        then(enrollResponse.getBody().getStudentID().equals(ID));
+
+
     }
 
     @Test
     public void enrollNewStudent() {
         // Post to student service --- done
-        // Get the student object from search -- need to work
+        // Get the student object from search -- Done
         // Post to Enroll service by using student object -- need to work
 
         ResponseEntity<Student> responseNewStudent = studentClient.addNewStudent();
         String id = responseNewStudent.getBody().getID();
         System.out.println(id);
         System.out.println(responseNewStudent.getBody());
+
+        ResponseEntity<Student> responseEntity = studentClient.searchStudent(id);
+        System.out.println(responseEntity.getBody().toString());
+        Assert.assertEquals(responseEntity.getStatusCode(), HttpStatus.OK);
+        Assert.assertEquals(responseNewStudent.getStatusCode(), HttpStatus.CREATED);
+
+        studentClient.enrollStudent(id);
 
     }
 
