@@ -51,13 +51,20 @@ public class EnrollServiceIntegrationTestSCC {
     @Test
     public void enrollNewStudent() {
         // Post to student service --- done
-        // Get the student object from search -- need to work
+        // Get the student object from search -- Done
         // Post to Enroll service by using student object -- need to work
 
         ResponseEntity<Student> responseNewStudent = studentClient.addNewStudent();
         String id = responseNewStudent.getBody().getID();
         System.out.println(id);
         System.out.println(responseNewStudent.getBody());
+
+        ResponseEntity<Student> responseEntity = studentClient.searchStudent(id);
+        System.out.println(responseEntity.getBody().toString());
+        Assert.assertEquals(responseEntity.getStatusCode(), HttpStatus.OK);
+        Assert.assertEquals(responseNewStudent.getStatusCode(), HttpStatus.CREATED);
+
+        studentClient.enrollStudent(id);
 
     }
 
