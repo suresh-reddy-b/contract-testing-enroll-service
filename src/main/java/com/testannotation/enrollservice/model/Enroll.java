@@ -26,7 +26,7 @@ public class Enroll {
         return duration;
     }
 
-    public void setDuration(String date) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 
@@ -34,9 +34,10 @@ public class Enroll {
         return course;
     }
 
-    public void setCourse(String time) {
+    public void setCourse(String course) {
         this.course = course;
     }
+    public Enroll() {}
 
     public Enroll(String enrollID, String studentID, String duration, String course) {
         this.enrollID=enrollID;

@@ -45,6 +45,8 @@ public class EnrollServiceIntegrationTestSCC {
         System.out.println(enrollResponse.getBody().getEnrollID());
         then(enrollResponse.getBody().getStudentID().equals(ID));
 
+        studentClient.enrollStudent(ID);
+
 
     }
 
