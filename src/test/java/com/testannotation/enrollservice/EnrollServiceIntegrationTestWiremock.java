@@ -23,17 +23,17 @@ public class EnrollServiceIntegrationTestWiremock {
     @Before
     public void createStub(){
         stubFor(get(urlPathEqualTo("/student-service/student"))
-                .withQueryParam("ID", equalTo("2020091701"))
+                .withQueryParam("ID", equalTo("2023030401"))
                 .willReturn(aResponse()
                     .withStatus(200)
                     .withHeader("Content-Type", "application/json")
                     .withBody("{\n"+
-                            "\"firstName\": \"John\",\n"+
-                            "\"lastName\": \"Smart\",\n"+
-                            "\"birthDate\": \"02/02/1997\",\n"+
-                            "\"registration\": \"04/12/2009\",\n"+
-                            "\"address\": \"15 Foreshore Road, Philadelphia, PA, 19101\",\n"+
-                            "\"id\": \"2020091701\"\n"+
+                            "\"firstName\": \"Suresh\",\n"+
+                            "\"lastName\": \"Reddy\",\n"+
+                            "\"birthDate\": \"10/05/1987\",\n"+
+                            "\"registration\": \"16/07/2002\",\n"+
+                            "\"address\": \"34 Avenue Street, California, CA, 90101\",\n"+
+                            "\"id\": \"2023030401\"\n"+
                              "}")
                 )
         );
@@ -42,7 +42,7 @@ public class EnrollServiceIntegrationTestWiremock {
     @Test
     public void enrollExistingStudent(){
         //Given
-        String ID = "2020091701";
+        String ID = "2023030401";
 
         //When
         ResponseEntity<Student> response = studentClient.searchStudent(ID);

@@ -29,7 +29,7 @@ public class EnrollServiceIntegrationTestSCC {
         // Post call to Enroll service --- need to work
 
         //Given
-        String ID = "2020091701";
+        String ID = "2023030401";
 
         //When
         ResponseEntity<Student> response = studentClient.searchStudent(ID);

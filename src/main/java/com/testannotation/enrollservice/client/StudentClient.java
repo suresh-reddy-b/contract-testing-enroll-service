@@ -42,7 +42,7 @@ public class StudentClient {
 
     public ResponseEntity<Student> addNewStudent(){
 
-        Student student = new Student("John", "Carter", "02/02/1993", "04/12/2020", "15 Foreshore Road, Philadelphia, PA, 19101");
+        Student student = new Student("Suresh", "Reddy", "10/05/1987", "16/07/2002", "34 Avenue Street, California, CA, 90101");
 
         HttpEntity<Student> entity = new HttpEntity<Student>(student, headers);
 
